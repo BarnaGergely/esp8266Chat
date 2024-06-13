@@ -1,0 +1,23 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Chat Server</title>
+    <script type="text/javascript" src="/scripts.js"></script>
+</head>
+
+<body>
+    <h1>Chat</h1>
+    <p id="disclaimer">loading messages...</p>
+    <ul id="chat">
+    </ul>
+    <h1>Post Message</h1>
+    <form action="sendText" method="post">
+        <label for="nickname">Nickname</label>
+        <input name="nickname" id="nickname" type="text" placeholder="anon"></input>
+        <label for="text">Text*</label>
+        <textarea id="text" name="text" cols=35 rows="4" required="required"></textarea>
+        <p id="formDisclaimer">Fields marked with * are required.</p>
+        <input type="submit" value="Send message">
+    </form>    
+</body>

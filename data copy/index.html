@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Chat Server</title>
+    <script type="text/javascript" src="./scripts.js"></script>
+
+    <meta name="color-scheme" content="dark light" />
+    <!--TODO: <link rel="icon" type="image/x-icon" href="./assets/base/Logo.svg" /> -->
+</head>
+
+<body>
+    <h1>Chat</h1>
+    <div id="messages">
+        <p id="disclaimer">loading messages...</p>
+        <ul id="chat">
+            <li>Gery: Alma1234</li>
+            <li>Gery: Alma1234</li>
+            <li>Gery: Alma1234</li>
+        </ul>
+    </div>
+    <form action="sendText" id="post" method="post">
+        <label>
+            Nickname
+            <br>
+            <input name="nickname" id="nickname" type="text" placeholder="Anon" size="6">
+        </label>
+        <div class="flex">
+            <textarea id="text" name="text" placeholder="Type your message..." required></textarea>
+            <input type="submit" value="Send">
+        </div>
+        </div>
+    </form>
+</body>
+
+</html>
