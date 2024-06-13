@@ -16,6 +16,15 @@ AsyncWebServer server(80);
 FSInfo fs_info;
 File f;
 
+// returns free space in the eeprom in bytes
+size_t getFreeSpace() {
+    // manually update info, because it wont update automatically
+    LittleFS.info(fs_info);
+    int freeSpace = fs_info.totalBytes - fs_info.usedBytes;
+    // if something went wrong and freeSpace is negative, return 0
+    return (freeSpace < 0) ? 0 : freeSpace;
+}
+
 void setup()
 {
     // configure IP and netmask
@@ -48,6 +57,11 @@ void setup()
         request->send(LittleFS, "/index.html", "text/html");
     });
 
+    // route to /tools.html file
+    server.on("/tools.html", HTTP_GET, [](AsyncWebServerRequest *request) {
+        request->send(LittleFS, "/tools.html", "text/html");
+    });
+
     // route to /styles.css file
     server.on("/styles.css", HTTP_GET, [](AsyncWebServerRequest *request) {
         request->send(LittleFS, "/styles.css", "text/css");
@@ -56,6 +70,12 @@ void setup()
     // route to /scripts.js file
     server.on("/scripts.js", HTTP_GET, [](AsyncWebServerRequest *request) {
         request->send(LittleFS, "/scripts.js", "text/js");
+    });
+
+    // route to get free space - Returns the free space in bytes
+    server.on("/getFreeSpace", HTTP_GET, [](AsyncWebServerRequest *request) {
+        LittleFS.info(fs_info);
+        request->send(200, "text/plain", String(getFreeSpace()));
     });
 
     // route to send text

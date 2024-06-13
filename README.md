@@ -6,6 +6,13 @@
   <p align="center">a simple chat server for the esp8266.</p>
 </p>
 
+## Tasks
+
+- [ ] Automate data minify, gzip, compress, build Filesystem image and upload Filesystem image
+- [ ] Improve UI Design
+- [ ] Optimize UI code
+- [ ] Improve tools page
+
 ## Screenshots
 ![Screenshot](screenshot.png)
 
