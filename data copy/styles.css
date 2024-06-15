@@ -80,9 +80,6 @@ input, textarea {
 	font-size: 1rem;
 }
 
-input[type='submit'] {
-}
-
 textarea {
 	width: 100%;
 }
@@ -90,16 +87,6 @@ textarea {
 .flex {
 	display: flex;
 	width: 100%;
-}
-
-#formDisclaimer {
-	font-size: 0.75rem;
-	text-align: center;
-}
-
-label {
-	text-align: center;
-	font-size: 0.8rem;
 }
 
 #post {

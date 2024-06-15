@@ -15,29 +15,33 @@
 
 <body>
     <header>
-        <h1><a href="/">💬 Chat Server</a></h1>
-        <nav><a href="tools.html">☰</a></nav>
+        <h1><a href="javascript:getPage('/messages.html')">💬 Chat Server</a></h1>
+        <nav><a href="javascript:getPage('/tools.html')">☰</a></nav>
     </header>
-    <div id="messages">
-        <p id="disclaimer">loading messages...</p>
-        <ul id="chat">
-            <li>Gery: Alma1234</li>
-            <li>Gery: Alma1234</li>
-            <li>Gery: Alma1234</li>
-        </ul>
-    </div>
-    <form action="sendText" id="post" method="post">
-        <label>
-            Nickname
-            <br>
-            <input name="nickname" id="nickname" type="text" placeholder="Anon" size="6">
-        </label>
-        <div class="flex">
-            <textarea id="text" name="text" placeholder="Type your message..." required></textarea>
-            <input type="submit" value="Send">
+    <main>
+        <div id="messages">
+            <p id="disclaimer">loading messages...</p>
+            <ul id="chat">
+                <!--
+                <li>Gery: Alma1234</li>
+                <li>Gery: Alma1234</li>
+                <li>Gery: Alma1234</li>
+                -->
+            </ul>
         </div>
-        </div>
-    </form>
+        <form action="sendText" method="post" id="post" onsubmit="onPostMessage()">
+            <label>
+                Nickname
+                <br>
+                <input name="nickname" id="nickname" type="text" value="Steve" size="6" required>
+            </label>
+            <div class="flex">
+                <textarea id="text" name="text" placeholder="Type your message..." required></textarea>
+                <input type="submit" value="Send">
+            </div>
+            </div>
+        </form>
+    </main>
 </body>
 
 </html>

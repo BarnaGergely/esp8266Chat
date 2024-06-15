@@ -1,1 +1,104 @@
-:root,body,h1{margin:0}#disclaimer,#formDisclaimer,h1,label,nav{text-align:center}#post,.flex,textarea{width:100%}#post,ul#chat>li{background-color:var(--clr-highlight);padding:.4rem}.flex,form,header{display:flex}:root{padding:0;font-size:16px;font-family:"Open Sans",sans-serif;--clr-highlight:light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.1))}*{box-sizing:border-box}#messages{max-width:1100px;margin:0 auto}ul#chat{list-style:none;padding-left:0}ul#chat>li{word-wrap:break-word;box-shadow:rgba(0,0,0,.3) 0 5px 9px;width:fit-content;margin:.4rem;border-radius:1rem}header{padding:0 1rem;justify-content:space-between;background-color:var(--clr-highlight)}nav{font-size:2rem}header a{text-decoration:none;color:CanvasText}input,textarea{font-size:1rem}#formDisclaimer{font-size:.75rem}label{font-size:.8rem}#post{position:fixed;bottom:0}form{gap:1rem;justify-content:space-between}
+/* Helpful links:
+- https://developer.mozilla.org/en-US/docs/Web/CSS/system-color
+- https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+- https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
+
+optimizers:
+- https://svgomg.net/
+- https://www.toptal.com/developers/cssminifier
+- https://www.toptal.com/developers/html-minifier
+- https://kangax.github.io/html-minifier/
+- https://www.toptal.com/developers/javascript-minifier
+- https://facia.dev/tools/compress-decompress/gzip-compress/
+
+- https://randomnerdtutorials.com/esp32-save-data-permanently-preferences/
+*/
+
+:root {
+	padding: 0;
+	margin: 0;
+	font-size: 16px;
+	font-family: "Open Sans", sans-serif;
+	--clr-highlight: light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.1));
+}
+
+body {
+	margin: 0;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+h1 {
+	text-align: center;
+	margin: 0;
+}
+
+#messages {
+	max-width: 1100px;
+	margin: 0 auto;
+}
+
+ul#chat {
+	list-style: none;
+    padding-left: 0;
+}
+
+ul#chat > li {
+	word-wrap: break-word;
+	background-color: var(--clr-highlight);
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 9px;
+	width: fit-content;
+	padding: 0.4rem;
+	margin: 0.4rem;
+	border-radius: 1rem;
+}
+
+header {
+	padding: 0  1rem;
+	display: flex;
+	justify-content: space-between;
+	background-color: var(--clr-highlight);
+}
+
+nav {
+	font-size: 2rem;
+	text-align: center;
+}
+
+header a {
+	text-decoration: none;
+	color: CanvasText;
+}
+
+#disclaimer {
+	text-align: center;
+}
+
+input, textarea {
+	font-size: 1rem;
+}
+
+textarea {
+	width: 100%;
+}
+
+.flex {
+	display: flex;
+	width: 100%;
+}
+
+#post {
+	background-color: var(--clr-highlight);
+    position: fixed;
+    bottom: 0;
+	width: 100%;
+	padding: 0.4rem;
+}
+
+form {
+	display: flex;
+	gap: 1rem;
+	justify-content: space-between;
+}

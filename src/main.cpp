@@ -11,6 +11,9 @@
 const char *ssid = "Chat Server";
 /* ============= ================ ============= */
 
+// cache expire time for static files in seconds, 7 days
+const char *catcheExpireTime = "max-age=604800";
+
 DNSServer dnsServer;
 AsyncWebServer server(80);
 FSInfo fs_info;
@@ -54,22 +57,41 @@ void setup()
 
     // route traffic to index.html file
     server.on("/", HTTP_GET, [](AsyncWebServerRequest *request) {
-        request->send(LittleFS, "/index.html", "text/html");
+        AsyncWebServerResponse *response = request->beginResponse(LittleFS, "/index.html", "text/html");
+        response->addHeader("Cache-Control", catcheExpireTime);
+        request->send(response);
+        //request->send(LittleFS, "/index.html", "text/html");
     });
 
     // route to /tools.html file
     server.on("/tools.html", HTTP_GET, [](AsyncWebServerRequest *request) {
-        request->send(LittleFS, "/tools.html", "text/html");
+        AsyncWebServerResponse *response = request->beginResponse(LittleFS, "/tools.html", "text/html");
+        response->addHeader("Cache-Control", catcheExpireTime);
+        request->send(response);
+        //request->send(LittleFS, "/tools.html", "text/html");
+    });
+
+        // route to /messages.html file
+    server.on("/tools.html", HTTP_GET, [](AsyncWebServerRequest *request) {
+        AsyncWebServerResponse *response = request->beginResponse(LittleFS, "/messages.html", "text/html");
+        response->addHeader("Cache-Control", catcheExpireTime);
+        request->send(response);
+        //request->send(LittleFS, "/tools.html", "text/html");
     });
 
     // route to /styles.css file
     server.on("/styles.css", HTTP_GET, [](AsyncWebServerRequest *request) {
-        request->send(LittleFS, "/styles.css", "text/css");
+        AsyncWebServerResponse *response = request->beginResponse(LittleFS, "/styles.css", "text/css");
+        response->addHeader("Cache-Control", catcheExpireTime);
+        request->send(response);
     });
 
     // route to /scripts.js file
     server.on("/scripts.js", HTTP_GET, [](AsyncWebServerRequest *request) {
-        request->send(LittleFS, "/scripts.js", "text/js");
+        AsyncWebServerResponse *response = request->beginResponse(LittleFS, "/scripts.js", "text/js");
+        response->addHeader("Cache-Control", catcheExpireTime);
+        //response->addHeader("Content-Encoding", "gzip");
+        request->send(response);
     });
 
     // route to get free space - Returns the free space in bytes
@@ -134,8 +156,8 @@ void setup()
 
         if (name == NULL)
         {
-            // default nickname is 'anon'
-            name = (char *)"anon";
+            // default nickname is 'Anon'
+            name = (char *)"Anon";
         }
 
         if (text == NULL)

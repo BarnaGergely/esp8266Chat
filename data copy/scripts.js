@@ -1,3 +1,11 @@
+// save the given name before form submit
+function onPostMessage() {
+	// if the nick name is not empty and this.nickname.value is not equal to the nickname stored in localStorage
+	// then update the localStorage nickname
+	if ((this.nickname.value !== '') && (this.nickname.value !== localStorage.getItem('nickname')))
+		localStorage.setItem('nickname', this.nickname.value);
+}
+
 function changeChatText(text) {
 	// split text into individual messages
 	text = text.split('|')
@@ -32,6 +40,23 @@ function getText() {
 	})
 }
 
+// initialize global variable to store the current displayed page
+var currentPage = '/';
+
+function changePage(text, pageUrl) {
+	document.getElementsByTagName('main')[0].innerHTML = text
+	currentPage = pageUrl;
+}
+
+//get page from server and call changePage
+function getPage(pageUrl) {
+	fetch(pageUrl).then(function (response) {
+		response.text().then(function (text) {
+			changePage(text, pageUrl);
+		})
+	})
+}
+
 // initialize global cache variable.
 // we need this to compare write times of the message file
 var cache = ''
@@ -51,5 +76,18 @@ function sync() {
 	}, 1000)
 }
 
-// start syncing on page load
-window.onload = sync();
+// on home page or messages page
+window.onload = () => {
+	if (currentPage === '/messages.html' || currentPage === '/') {
+		// load messages from server
+		getPage('/messages.html');
+
+		// if local storage has nickname, set the nickname input value to it
+		if (localStorage.getItem('nickname') !== null) {
+			document.getElementById('nickname').value = localStorage.getItem('nickname')
+		}
+
+		// start syncing on page load
+		sync();
+	}
+};
