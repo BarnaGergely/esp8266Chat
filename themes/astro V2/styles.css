@@ -15,24 +15,28 @@ optimizers:
 */
 
 :root {
-	padding: 0;
-	margin: 0;
 	font-size: 16px;
 	font-family: "Open Sans", sans-serif;
-	--clr-highlight: light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.1));
+    /*light-dark(rgba(0, 0, 0, .1), rgba(255, 255, 255, .1))*/
+	--clr-1: light-dark(#0000001a,#ffffff1a);
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body {
 	margin: 0;
 }
 
-* {
-	box-sizing: border-box;
+h1 {
+	margin: 0;
 }
 
-h1 {
-	text-align: center;
-	margin: 0;
+button {
+    padding: .4rem;
+    font-size: 1rem;
+    margin: .4rem;
 }
 
 #messages {
@@ -47,24 +51,18 @@ ul#chat {
 
 ul#chat > li {
 	word-wrap: break-word;
-	background-color: var(--clr-highlight);
-	box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 9px;
+	background-color: var(--clr-1);
 	width: fit-content;
-	padding: 0.4rem;
-	margin: 0.4rem;
+	padding: .4rem;
+	margin: .4rem;
 	border-radius: 1rem;
 }
 
 header {
-	padding: 0  1rem;
+	padding: 0  .8rem;
 	display: flex;
 	justify-content: space-between;
-	background-color: var(--clr-highlight);
-}
-
-nav {
-	font-size: 2rem;
-	text-align: center;
+	background-color: var(--clr-1);
 }
 
 header a {
@@ -78,6 +76,7 @@ header a {
 
 input, textarea {
 	font-size: 1rem;
+    font-family: "Open Sans", sans-serif;
 }
 
 textarea {
@@ -90,15 +89,42 @@ textarea {
 }
 
 #post {
-	background-color: var(--clr-highlight);
+	background-color: var(--clr-1);
     position: fixed;
     bottom: 0;
-	width: 100%;
-	padding: 0.4rem;
+    width: 100%;
+	padding: .4rem;
 }
 
 form {
 	display: flex;
 	gap: 1rem;
 	justify-content: space-between;
+}
+
+
+/*Menu*/
+.dialog-menu,
+.dialog-menu[open].dialog-menu--closing{
+  position: fixed;
+  margin: 0;
+  margin-left: auto;
+  min-height: 100vh;
+  width: 400px;
+  max-width: 80%;
+  transform: translateX(100%);
+
+  border: 0;
+  padding-top: 0;
+}
+.dialog-menu[open] {
+  margin: 0;
+  margin-left: auto;
+  transform: translateX(0);
+}
+
+.dialog-menu button:first-child {
+    display: block;
+    margin-left: auto; 
+    margin-right: 0;
 }

@@ -62,13 +62,44 @@ void setup()
 
     // route traffic to index.html file
     server.on("/", HTTP_GET, [](AsyncWebServerRequest *request) {
-        AsyncWebServerResponse *response = request->beginResponse(LittleFS, "/index.html.gz", "text/html");
+        AsyncWebServerResponse *response = request->beginResponse(LittleFS, "/index.html", "text/html");
         response->addHeader("Cache-Control", catcheExpireTime);
-        response->addHeader("Content-Encoding", "gzip");
+        request->send(response);
+        //request->send(LittleFS, "/index.html", "text/html");
+    });
+
+    // route to /tools.html file
+    server.on("/tools.html", HTTP_GET, [](AsyncWebServerRequest *request) {
+        AsyncWebServerResponse *response = request->beginResponse(LittleFS, "/tools.html", "text/html");
+        response->addHeader("Cache-Control", catcheExpireTime);
+        request->send(response);
+        //request->send(LittleFS, "/tools.html", "text/html");
+    });
+
+        // route to /messages.html file
+    server.on("/tools.html", HTTP_GET, [](AsyncWebServerRequest *request) {
+        AsyncWebServerResponse *response = request->beginResponse(LittleFS, "/messages.html", "text/html");
+        response->addHeader("Cache-Control", catcheExpireTime);
+        request->send(response);
+        //request->send(LittleFS, "/tools.html", "text/html");
+    });
+
+    // route to /styles.css file
+    server.on("/styles.css", HTTP_GET, [](AsyncWebServerRequest *request) {
+        AsyncWebServerResponse *response = request->beginResponse(LittleFS, "/styles.css", "text/css");
+        response->addHeader("Cache-Control", catcheExpireTime);
         request->send(response);
     });
 
-    server.on("/toogleBlynk", HTTP_GET, [](AsyncWebServerRequest *request) {
+    // route to /scripts.js file
+    server.on("/scripts.js", HTTP_GET, [](AsyncWebServerRequest *request) {
+        AsyncWebServerResponse *response = request->beginResponse(LittleFS, "/scripts.js", "text/js");
+        response->addHeader("Cache-Control", catcheExpireTime);
+        //response->addHeader("Content-Encoding", "gzip");
+        request->send(response);
+    });
+
+        server.on("/toogleBlynk", HTTP_GET, [](AsyncWebServerRequest *request) {
         isBlynk = !isBlynk;
         request->send(200, "text/plain", String(isBlynk));
     });

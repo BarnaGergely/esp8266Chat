@@ -1,0 +1,22 @@
+<div id="messages">
+    <p id="disclaimer">loading messages...</p>
+    <ul id="chat">
+        <!--
+        <li>Gery: Alma1234</li>
+        <li>Gery: Alma1234</li>
+        <li>Gery: Alma1234</li>
+        -->
+    </ul>
+</div>
+<form action="sendText" method="post" id="post" onsubmit="onPostMessage()">
+    <label>
+        Nickname
+        <br>
+        <input name="nickname" id="nickname" type="text" value="Steve" size="6" required>
+    </label>
+    <div class="flex">
+        <textarea id="text" name="text" placeholder="Type your message..." required></textarea>
+        <input type="submit" value="Send">
+    </div>
+    </div>
+</form>

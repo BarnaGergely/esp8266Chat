@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Chat Server</title>
+    <meta name="color-scheme" content="dark light" />
+    <!--TODO: <link rel="icon" type="image/x-icon" href="./assets/base/Logo.svg" /> -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💬</text></svg>">
+
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="scripts.js"></script>
+
+    <style>
+        /*TODO:*/
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1><a href="#">💬 Chat Server</a></h1>
+        <button onclick="openMenu()">☰</button>
+    </header>
+    <dialog class="dialog-menu">
+        <button onclick="closeMenu()" class="close-button">🗙</button>
+        <ul>
+            <li>Free space: <span id="freeSpace"></span> bytes</li>
+            <li>Last write: <span id="lastWrite"></span></li>
+        </ul>
+        <button onclick="deleteMessages()">Delete all messages</button>
+        <button onclick="toogleBlynk()">Toogle blynk</button>
+    </dialog>
+    <main>
+        <div id="messages">
+            <p id="disclaimer">loading messages...</p>
+            <ul id="chat">
+                <!--
+                <li>Gery: Alma1234</li>
+                <li>Gery: Alma1234</li>
+                <li>Gery: Alma1234</li>
+                -->
+            </ul>
+        </div>
+        <form action="sendText" method="post" id="post" onsubmit="onPostMessage()">
+            <label>
+                Nickname
+                <br>
+                <input name="nickname" id="nickname" type="text" value="Steve" size="6" required>
+            </label>
+            <div class="flex">
+                <textarea id="text" name="text" placeholder="Type your message..." required></textarea>
+                <input type="submit" value="Send">
+            </div>
+            </div>
+        </form>
+    </main>
+    <script>
+        // TODO: 
+    </script>
+</body>
+
+</html>

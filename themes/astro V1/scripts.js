@@ -1,8 +1,12 @@
+function onCloseMenu() {
+	console.log('close menu')
+}
+
 // save the given name before form submit
 function onPostMessage() {
 	// if the nick name is not empty and this.nickname.value is not equal to the nickname stored in localStorage
 	// then update the localStorage nickname
-	if ((this.nickname.value !== '') && (this.nickname.value !== localStorage.getItem('nickname')))
+	if (this.nickname.value !== localStorage.getItem('nickname'))
 		localStorage.setItem('nickname', this.nickname.value);
 }
 
