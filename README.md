@@ -1,6 +1,5 @@
-<div style="text-align: center;">
+<div style="display: flex; flex-direction: column; text-align: center;">
   <img src="icon.png" alt="Logo" width="100" height="100">
-
   <h3>esp8266Chat</h3>
   <p>A simple chat server for the esp8266.</p>
 </div>
