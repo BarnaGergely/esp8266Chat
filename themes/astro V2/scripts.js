@@ -3,45 +3,36 @@ let menuDialog;
 // update server stats and open the menu
 function openMenu() {
 	// get server stats before opening the menu
-	let freeSpaceSpan = document.getElementById('freeSpace');
-	fetch(`/getFreeSpace`).then(function (response) {
-		response.text().then(function (text) {
-			freeSpaceSpan.textContent = text;
-		})
-	});
-	let lastWriteSpan = document.getElementById('lastWrite');
-	fetch(`/lastWrite`).then(function (response) {
-		response.text().then(function (text) {
-			lastWriteSpan.textContent = text;
-		})
-	});
+	fetch(`/getFreeSpace`).then(response => response.text().then(text => {
+		document.getElementById('freeSpace').textContent = text;
+	}));
+	fetch(`/lastWrite`).then(response => response.text().then(text => {
+		document.getElementById('lastWrite').textContent = text;
+	}));
 
 	// open the menu
 	menuDialog.showModal();
 }
 
+// close the menu
 function closeMenu() {
-	// close the menu
+
 	menuDialog.close();
 }
 
 // toogle led blynk
-function toogleBlynk() {
-	fetch(`/toggleBlynk`).then(function (response) {
-		response.text().then(function (text) {
-			alert(text);
-		})
-	});
+function toggleBlynk() {
+	fetch(`/toggleBlynk`).then(response => response.text().then(text => {
+		alert(text);
+	}));
 }
 
 // delete all messages from server cache
 function deleteMessages() {
 	if (window.confirm("Are you sure to delete all messages from server?"))
-		fetch(`/clear`).then(function (response) {
-			response.text().then(function (text) {
-				alert(text);
-			})
-		});
+		fetch(`/clear`).then(response => response.text().then(text => {
+			alert(text);
+		}));
 }
 
 // save the given name before form submit
@@ -79,11 +70,9 @@ function changeChatText(text) {
 
 // get message file contents and call changeChatText
 function getText() {
-	fetch(`/showText`).then(function (response) {
-		response.text().then(function (text) {
-			changeChatText(text)
-		})
-	});
+	fetch(`/showText`).then(response => response.text().then(text => {
+		changeChatText(text);
+	}));
 }
 
 // initialize global cache variable.
@@ -93,24 +82,20 @@ var cache = ''
 // get last time chat was written to and syncronize if necessary.
 // executed every second
 function sync() {
-	setInterval(function getLastWrite() {
-		fetch(`/lastWrite`).then(function (response) {
-			response.text().then(function (text) {
-				if (cache !== text) {
-					cache = text
-					getText()
-				}
-			})
-		})
+	setInterval(() => {
+		fetch(`/lastWrite`).then(response => response.text().then(text => {
+			if (cache !== text) {
+				cache = text;
+				getText();
+			}
+		}));
 	}, 1000);
 }
 
-
 window.onload = () => {
 		// if local storage has nickname, set the nickname input value to it
-		if (localStorage.getItem('nickname') !== null) {
-			document.getElementById('nickname').value = localStorage.getItem('nickname')
-		}
+		if (localStorage.getItem('nickname') !== null)
+			document.getElementById('nickname').value = localStorage.getItem('nickname');
 
 		// start syncing on page load
 		sync();

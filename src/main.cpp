@@ -68,7 +68,7 @@ void setup()
         request->send(response);
     });
 
-    server.on("/toogleBlynk", HTTP_GET, [](AsyncWebServerRequest *request) {
+    server.on("/toggleBlynk", HTTP_GET, [](AsyncWebServerRequest *request) {
         isBlynk = !isBlynk;
         request->send(200, "text/plain", String(isBlynk));
     });
@@ -193,7 +193,7 @@ void setup()
     server.on("/clear", HTTP_GET, [](AsyncWebServerRequest *request) {
         f = LittleFS.open("/messages.txt", "w");
         f.close();
-        request->redirect("/");
+        request->send(200);
     });
 
     // route rest of traffic to index (triggers captive portal popup)

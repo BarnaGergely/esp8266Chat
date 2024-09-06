@@ -13,6 +13,15 @@
 - [ ] Optimize UI code
 - [ ] Improve tools page
 
+## Compression process
+
+1. Copy index.html to compressed folder
+2. Minify css and copy to the <style> tag: https://www.toptal.com/developers/cssminifier
+3. Minify JavaScript and copy to the <script> tag: https://www.toptal.com/developers/javascript-minifier
+4. Minify HTML: https://codebeautify.org/minify-html
+5. Gzip HTML: https://gzip.swimburger.net/
+6. Copy the combined, minified, and compressed html to data folder
+
 ## Screenshots
 ![Screenshot](screenshot.png)
 
