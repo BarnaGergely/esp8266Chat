@@ -6,7 +6,7 @@ You can make a standalone local chat server which works without the internet fro
 
 ## Features
 
-<img style="width: 40%" src="screenshot-v2.png" alt="Screenshot">
+<img style="width: 600px" src="screenshot-v2.png" alt="Screenshot">
 
 When you connect the ESP to the power, it creates a WiFi network and hosts a local chat server. You can send messages to a public channel, without the internet and read it.
 
@@ -18,7 +18,7 @@ By default, the NodeMCU blinks its built-in LED every second. You can turn this 
 
 This project is based on [Kuuhhl's esp8266Chat](https://github.com/Kuuhhl/esp8266Chat), but has many improvements.
 
-<img style="width: 40%" src="uicomparsion.png" alt="UI comparsion V1 vs V2">
+<img style="width: 600px" src="uicomparsion.png" alt="UI comparsion V1 vs V2">
 
 * 📱 New, modern, responsive, mobile-friendly, lightweight (1 kb) theme
 * 🚀 Performance boost: browser side caching, gzipped files, fewer HTTP request
